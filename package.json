@@ -6,8 +6,7 @@
   "scripts": {
     "build": "hexo generate",
     "start": "hexo server --ip 127.0.0.1",
-    "clean": "hexo clean",
-    "sync:stars": "node tools/sync-stars.mjs"
+    "clean": "hexo clean"
   },
   "hexo": { "version": "8.1.2" },
   "dependencies": {

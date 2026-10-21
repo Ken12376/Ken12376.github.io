@@ -26,15 +26,13 @@ document.addEventListener('keydown', event => {
   }
 });
 
-document.querySelectorAll('[data-post-browser], [data-star-browser]').forEach(container => {
-  const posts = container.hasAttribute('data-post-browser');
+document.querySelectorAll('[data-post-browser]').forEach(container => {
   const search = container.querySelector('input[type="search"]');
-  const cards = [...container.querySelectorAll(posts ? '.post-card' : '.star-card')];
+  const cards = [...container.querySelectorAll('.post-card')];
   const sourceFilter = container.querySelector('#source-filter');
   const chips = [...container.querySelectorAll('[data-filter]')];
   const parameters = new URLSearchParams(location.search);
-  const filterKey = posts ? 'direction' : 'language';
-  const requestedFilter = parameters.get(filterKey) || container.dataset.defaultFilter || 'all';
+  const requestedFilter = parameters.get('direction') || container.dataset.defaultFilter || 'all';
   let activeFilter = chips.some(chip => chip.dataset.filter === requestedFilter) ? requestedFilter : 'all';
   search.value = parameters.get('q') || '';
   if (sourceFilter && [...sourceFilter.options].some(option => option.value === parameters.get('source'))) sourceFilter.value = parameters.get('source');
@@ -42,9 +40,8 @@ document.querySelectorAll('[data-post-browser], [data-star-browser]').forEach(co
     const query = search.value.trim().toLocaleLowerCase();
     let count = 0;
     cards.forEach(card => {
-      const category = posts ? card.dataset.category : card.dataset.language;
       const sourceMatches = !sourceFilter || sourceFilter.value === 'all' || card.dataset.event === sourceFilter.value;
-      card.hidden = !(activeFilter === 'all' || category === activeFilter) || !sourceMatches || !card.dataset.search.includes(query);
+      card.hidden = !(activeFilter === 'all' || card.dataset.category === activeFilter) || !sourceMatches || !card.dataset.search.includes(query);
       if (!card.hidden) count++;
     });
     chips.forEach(chip => { const active = chip.dataset.filter === activeFilter; chip.classList.toggle('is-active', active); chip.setAttribute('aria-pressed', String(active)); });

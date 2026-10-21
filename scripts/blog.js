@@ -9,12 +9,10 @@ const directions = [
   { name: 'Forensics', label: '数字取证', icon: 'search', note: '让每一条线索说话', mark: '010' }
 ];
 const CHARACTERS_PER_MINUTE = 500;
-const COMPACT_NUMBER_THRESHOLD = 1000;
 const iconPaths = {
   arrow: '<path d="M5 12h14m-6-6 6 6-6 6"/>',
   diagonal: '<path d="M6 18 18 6M6 6h12v12"/>',
   search: '<circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/>',
-  star: '<path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1.1 6.2-5.6-3-5.6 3 1.1-6.2L3 9.6l6.2-.9Z"/>',
   code: '<path d="m7 7-5 5 5 5m10-10 5 5-5 5m-4-14-2 18"/>',
   terminal: '<path d="m5 6 6 6-6 6m8 0h6"/>',
   globe: '<circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18"/>',
@@ -34,10 +32,9 @@ hexo.extend.helper.register('blog', () => {
 });
 hexo.extend.helper.register('direction_for', post => directions.find(direction => post.categories.toArray().some(category => category.name === direction.name)) || directions[0]);
 hexo.extend.helper.register('reading_minutes', post => Math.max(1, Math.ceil(post.content.replace(/<[^>]+>/g, '').length / CHARACTERS_PER_MINUTE)));
-hexo.extend.helper.register('compact_number', value => value >= COMPACT_NUMBER_THRESHOLD ? `${(value / COMPACT_NUMBER_THRESHOLD).toFixed(1)}k` : String(value));
 hexo.extend.generator.register('blog-pages', () => [
   { path: 'index.html', layout: 'index', data: { pageKind: 'home' } },
-  ...['writeups', 'stars', 'about', 'archives', 'categories'].map(name => ({ path: `${name}/index.html`, layout: name === 'archives' || name === 'categories' ? 'writeups' : name, data: { pageKind: name, title: { writeups: '题解菜单', stars: '星标收藏', about: '关于我', archives: '文章归档', categories: '方向分类' }[name] } })),
+  ...['writeups', 'about', 'archives', 'categories'].map(name => ({ path: `${name}/index.html`, layout: name === 'archives' || name === 'categories' ? 'writeups' : name, data: { pageKind: name, title: { writeups: '题解菜单', about: '关于我', archives: '文章归档', categories: '方向分类' }[name] } })),
   ...directions.map(direction => ({ path: `categories/${direction.name}/index.html`, layout: 'writeups', data: { pageKind: 'category', title: `${direction.label} · ${direction.name}`, categoryName: direction.name } })),
   { path: '404.html', layout: '404', data: { pageKind: 'not-found', title: '这一层还没有内容' } }
 ]);

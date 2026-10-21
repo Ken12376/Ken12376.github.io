@@ -27,6 +27,4 @@ npm run build
 npm start
 ```
 
-更新星标时，先运行 `npm run sync:stars`，然后提交新的快照。部署本身使用现有快照，不依赖额外的 GitHub API 请求。
-
 参考：[Hexo 官方教程](https://hexo.io/docs/github-pages)、[GitHub Actions 部署说明](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)。
