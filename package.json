@@ -1,0 +1,19 @@
+{
+  "name": "double-codfish-blog",
+  "version": "1.0.0",
+  "private": true,
+  "description": "双层鳕鱼堡的 Hexo 博客",
+  "scripts": {
+    "build": "hexo generate",
+    "start": "hexo server --ip 127.0.0.1",
+    "clean": "hexo clean",
+    "sync:stars": "node tools/sync-stars.mjs"
+  },
+  "hexo": { "version": "8.1.2" },
+  "dependencies": {
+    "hexo": "8.1.2",
+    "hexo-renderer-ejs": "2.0.0",
+    "hexo-renderer-marked": "7.0.1",
+    "hexo-server": "3.0.0"
+  }
+}

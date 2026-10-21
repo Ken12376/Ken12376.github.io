@@ -1,0 +1,17 @@
+node_modules/
+public/
+dist/
+db.json
+.env
+.env.local
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+credentials.json
+service-account*.json
+secrets/
+.DS_Store
+.openai/*.tar.gz
+.openai/

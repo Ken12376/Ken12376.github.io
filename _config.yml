@@ -1,0 +1,28 @@
+title: 双层鳕鱼堡
+subtitle: 一点热爱，层层叠加。
+description: 双层鳕鱼堡的个人博客，记录 CTF 题解、逆向探索与值得收藏的开源项目。
+author: 双层鳕鱼堡
+language: zh-CN
+timezone: Asia/Shanghai
+url: https://ken12376.github.io
+root: /
+permalink: posts/:title/
+pretty_urls:
+  trailing_index: false
+  trailing_html: false
+source_dir: source
+public_dir: dist
+theme: codfish
+post_asset_folder: false
+highlight:
+  enable: true
+  line_number: false
+  auto_detect: false
+prismjs:
+  enable: false
+marked:
+  gfm: true
+  breaks: false
+  dompurify: false
+github: https://github.com/Ken12376
+github_username: Ken12376

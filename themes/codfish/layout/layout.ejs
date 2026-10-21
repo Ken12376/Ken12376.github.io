@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff4d8">
+  <title><%= page.title ? `${page.title} | ` : '' %><%= config.title %></title>
+  <meta name="description" content="<%= page.excerpt ? strip_html(page.excerpt).slice(0, 150) : config.description %>">
+  <link rel="icon" href="<%- url_for('/assets/burger.jpg') %>">
+  <link rel="stylesheet" href="<%- url_for('/css/style.css') %>">
+  <script src="<%- url_for('/js/main.js') %>" defer></script>
+</head>
+<body data-page="<%= page.pageKind || 'post' %>">
+  <a class="skip-link" href="#main">跳到内容</a>
+  <div class="reading-progress" aria-hidden="true"></div>
+  <div class="ambient" aria-hidden="true">
+    <img class="scene-background" src="<%- url_for('/assets/diner-scene.png') %>" alt="" fetchpriority="high">
+    <div class="scene-overlay"></div>
+    <div class="ambient-orb orb-one"></div><div class="ambient-orb orb-two"></div>
+  </div>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="<%- url_for('/') %>" aria-label="双层鳕鱼堡首页"><img class="brand-avatar" src="<%- url_for('/assets/burger.jpg') %>" alt="" width="38" height="38"><span class="brand-name">双层鳕鱼堡<span class="brand-dot">.</span></span></a>
+      <nav class="nav-links" aria-label="主导航">
+        <% [['/', '首页', 'home'], ['/writeups/', '题解菜单', 'writeups'], ['/stars/', '星标收藏', 'stars'], ['/about/', '关于我', 'about']].forEach(([href, label, kind]) => { const active = page.pageKind === kind || kind === 'writeups' && ['category','categories','archives'].includes(page.pageKind); %>
+          <a class="nav-link<%= active ? ' is-active' : '' %>" href="<%- url_for(href) %>"<%- active ? ' aria-current="page"' : '' %>><%= label %></a>
+        <% }) %>
+      </nav>
+      <div class="header-actions"><a class="icon-button" href="<%- url_for('/writeups/#search') %>" aria-label="搜索题解"><%- icon('search') %></a><a class="icon-button github-link" href="<%= config.github %>" target="_blank" rel="noopener noreferrer" aria-label="GitHub 主页"><%- icon('github') %></a><button class="icon-button menu-toggle" aria-label="打开导航" aria-expanded="false" aria-controls="mobile-menu"><%- icon('menu') %></button></div>
+    </div>
+    <nav id="mobile-menu" class="mobile-menu" aria-label="手机导航" hidden><a href="<%- url_for('/') %>">首页</a><a href="<%- url_for('/writeups/') %>">题解菜单</a><a href="<%- url_for('/stars/') %>">星标收藏</a><a href="<%- url_for('/about/') %>">关于我</a></nav>
+  </header>
+  <main id="main" class="page-shell"><%- body %></main>
+  <footer class="site-footer"><div class="footer-inner"><div class="footer-brand"><a href="<%- url_for('/') %>">双层鳕鱼堡<span> / </span>一点热爱，层层叠加。</a><p>© <%= new Date().getFullYear() %> 双层鳕鱼堡 · 用好奇心加餐</p></div><div class="footer-links"><a href="https://hexo.io/" target="_blank" rel="noopener noreferrer">Powered by Hexo <%- icon('diagonal') %></a><a href="<%= config.github %>" target="_blank" rel="noopener noreferrer">GitHub <%- icon('diagonal') %></a><a href="<%- url_for('/archives/') %>">文章归档</a></div></div><p class="fan-note">个人博客 · 餐盘插画为 AI 创作，非麦当劳官方网站</p></footer>
+  <button class="back-to-top icon-button" aria-label="回到顶部" hidden><%- icon('up') %></button>
+</body>
+</html>
