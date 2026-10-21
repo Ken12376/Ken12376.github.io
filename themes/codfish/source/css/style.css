@@ -100,6 +100,7 @@ button svg, .text-link svg, .nav-link svg { width: 18px; height: 18px; }
 .scroll-cue { position: absolute; left: 0; bottom: 28px; display: flex; gap: 10px; align-items: center; color: #a3927e; font-size: 9px; letter-spacing: .18em; text-transform: uppercase; }
 .scroll-cue svg { width: 13px; height: 13px; }
 .section-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; margin: 0 0 28px; }
+.section-heading > .button { flex-shrink: 0; white-space: nowrap; }
 .section-heading .section-kicker { margin-bottom: 5px; font-size: 9px; }
 .section-title { margin: 0; font-size: 25px; letter-spacing: -.04em; font-weight: 650; }
 .text-link { display: inline-flex; align-items: center; gap: 8px; color: #8c7359; font-size: 11px; white-space: nowrap; }
