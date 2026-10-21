@@ -1,0 +1,9 @@
+<section class="page-intro"><a class="breadcrumb" href="<%- url_for('/') %>">首页 / 友链</a><span class="eyebrow">FRIENDS AT THE TABLE</span><h1 class="page-title">好朋友，一起坐。</h1><p>去朋友的小站串个门，发现更多有趣的记录。</p></section>
+<% [{ pinned: true, label: '置顶友链 · PINNED FRIENDS', title: 'cry的超级大手子，大家快去关注他' }, { pinned: false, label: 'MORE FRIENDS', title: '普通友链' }].forEach(section => { const friends = site.data.friends.filter(friend => friend.pinned === section.pinned); %>
+<section class="star-preview" aria-labelledby="<%= section.pinned ? 'pinned-friends' : 'other-friends' %>">
+  <div class="section-heading"><div><span class="section-kicker"><%= section.label %></span><h2 id="<%= section.pinned ? 'pinned-friends' : 'other-friends' %>" class="section-title"><%= section.title %></h2></div></div>
+  <% if (friends.length) { %><div class="star-grid"><% friends.forEach(friend => { %>
+    <a class="star-card glass-card" href="<%= friend.url %>" target="_blank" rel="noopener noreferrer"><div class="repo-heading"><%- icon('globe') %><span class="repo-owner"><%= friend.owner %></span><span class="repo-arrow"><%- icon('diagonal') %></span></div><h3 class="repo-title"><%= friend.name %></h3><p class="repo-description"><%= friend.description %></p><div class="repo-meta"><span>去朋友的小站串个门 <%- icon('arrow') %></span></div></a>
+  <% }) %></div><% } else { %><div class="empty-state glass-card"><h3>这一桌还空着</h3><p>普通友链暂未收录。</p></div><% } %>
+</section>
+<% }) %>

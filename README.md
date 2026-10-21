@@ -1,6 +1,6 @@
 # 双层鳕鱼堡的 Hexo 博客
 
-卡通餐盘、双层鳕鱼堡头像、奶油黄与红色点缀，配合视差背景和半透明磨砂玻璃。完整源码、38 篇题解与学习记录都在此工程中。文章支持方向、来源和关键词组合筛选，首页包含朋友博客的友链。
+卡通餐盘、双层鳕鱼堡头像、奶油黄与红色点缀，配合视差背景和半透明磨砂玻璃。完整源码、38 篇题解与学习记录都在此工程中。文章支持方向、来源和关键词组合筛选，独立友链页包含置顶和普通友链分区。
 
 这是 GitHub Pages 专用发布源，目标地址为 `https://ken12376.github.io/`。首次部署步骤见 [部署说明](docs/github-pages.md)。
 
@@ -41,6 +41,7 @@ slug: my-challenge
 - 头像：用户提供的原始 `source/assets/burger.jpg`，已核对与原图一致。
 - 餐盘背景：内置 imagegen 生成，文件为 `source/assets/diner-scene.png`；提示词见 `docs/image-prompt.md`。
 - 主题：`themes/codfish/`；页面生成与轻量助手：`scripts/blog.js`。
+- 友链：在 `source/_data/friends.json` 维护，`pinned: true` 归入置顶友链，其余使用 `pinned: false` 归入普通友链。
 - 发布配置：`.github/workflows/pages.yml`；推送 `main` 后由 GitHub Actions 构建并发布。此副本不包含 Sites 托管标识。
 
 ## 验证与依赖说明

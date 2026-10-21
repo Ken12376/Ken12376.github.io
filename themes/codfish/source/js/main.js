@@ -75,8 +75,14 @@ document.querySelectorAll('.article-body pre').forEach(pre => {
 
 const backToTop = document.querySelector('.back-to-top');
 const progress = document.querySelector('.reading-progress');
+const homepagePreview = document.querySelector('body[data-page="home"] #latest');
+const siteHeader = document.querySelector('.site-header');
 let scrollPending = false;
 const paintScroll = () => {
+  if (homepagePreview) {
+    const previewStart = homepagePreview.getBoundingClientRect().top + window.scrollY - siteHeader.offsetHeight;
+    root.style.setProperty('--scene-opacity', Math.max(0, 1 - window.scrollY / Math.max(1, previewStart)));
+  }
   root.style.setProperty('--scroll', Math.min(window.scrollY, PARALLAX_SCROLL_LIMIT));
   const scrollable = root.scrollHeight - window.innerHeight;
   progress.style.transform = `scaleX(${scrollable > 0 ? window.scrollY / scrollable : 0})`;

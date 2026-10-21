@@ -34,7 +34,7 @@ hexo.extend.helper.register('direction_for', post => directions.find(direction =
 hexo.extend.helper.register('reading_minutes', post => Math.max(1, Math.ceil(post.content.replace(/<[^>]+>/g, '').length / CHARACTERS_PER_MINUTE)));
 hexo.extend.generator.register('blog-pages', () => [
   { path: 'index.html', layout: 'index', data: { pageKind: 'home' } },
-  ...['writeups', 'about', 'archives', 'categories'].map(name => ({ path: `${name}/index.html`, layout: name === 'archives' || name === 'categories' ? 'writeups' : name, data: { pageKind: name, title: { writeups: '题解菜单', about: '关于我', archives: '文章归档', categories: '方向分类' }[name] } })),
+  ...['writeups', 'friends', 'about', 'archives', 'categories'].map(name => ({ path: `${name}/index.html`, layout: name === 'archives' || name === 'categories' ? 'writeups' : name, data: { pageKind: name, title: { writeups: '题解菜单', friends: '友链', about: '关于我', archives: '文章归档', categories: '方向分类' }[name] } })),
   ...directions.map(direction => ({ path: `categories/${direction.name}/index.html`, layout: 'writeups', data: { pageKind: 'category', title: `${direction.label} · ${direction.name}`, categoryName: direction.name } })),
   { path: '404.html', layout: '404', data: { pageKind: 'not-found', title: '这一层还没有内容' } }
 ]);

@@ -36,6 +36,7 @@ button svg, .text-link svg, .nav-link svg { width: 18px; height: 18px; }
 .skip-link { position: fixed; z-index: 100; top: 10px; left: 20px; padding: 9px 18px; border-radius: 7px; background: #fff8e4; border: 1px solid #ad8a4b; transform: translateY(-150%); }
 .skip-link:focus { transform: none; }
 .ambient { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+body[data-page="home"] .ambient { opacity: var(--scene-opacity, 1); }
 .scene-background { position: absolute; top: 0; left: 0; width: 100%; height: 850px; object-fit: cover; object-position: center top; opacity: .82; transform: translate3d(calc(var(--pointer-x) * -8px), calc(var(--scroll) * -.12px), 0) scale(1.03); }
 .scene-overlay { position: absolute; inset: 0; background: linear-gradient(90deg, #fff8e98a, #fff8e947 42%, transparent 78%), linear-gradient(180deg, transparent 400px, #fff6e680 730px, var(--cream) 950px); }
 .ambient-orb { position: absolute; border-radius: 50%; filter: blur(54px); opacity: .48; will-change: transform; }
