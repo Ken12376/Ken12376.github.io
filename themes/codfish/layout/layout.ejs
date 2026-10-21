@@ -7,7 +7,7 @@
   <title><%= page.title ? `${page.title} | ` : '' %><%= config.title %></title>
   <meta name="description" content="<%= page.excerpt ? strip_html(page.excerpt).slice(0, 150) : config.description %>">
   <link rel="icon" href="<%- url_for('/assets/burger.jpg') %>">
-  <link rel="stylesheet" href="<%- url_for('/css/style.css') %>">
+  <link rel="stylesheet" href="<%- url_for('/css/style.css') %>?v=91d5295b">
   <script src="<%- url_for('/js/main.js') %>" defer></script>
 </head>
 <body data-page="<%= page.pageKind || 'post' %>">
