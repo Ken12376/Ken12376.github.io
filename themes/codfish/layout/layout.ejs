@@ -22,13 +22,13 @@
     <div class="header-inner">
       <a class="brand" href="<%- url_for('/') %>" aria-label="双层鳕鱼堡首页"><img class="brand-avatar" src="<%- url_for('/assets/burger.jpg') %>" alt="" width="38" height="38"><span class="brand-name">双层鳕鱼堡<span class="brand-dot">.</span></span></a>
       <nav class="nav-links" aria-label="主导航">
-        <% [['/', '首页', 'home'], ['/writeups/', '题解菜单', 'writeups'], ['/stars/', '星标收藏', 'stars'], ['/about/', '关于我', 'about']].forEach(([href, label, kind]) => { const active = page.pageKind === kind || kind === 'writeups' && ['category','categories','archives'].includes(page.pageKind); %>
+        <% [['/', '首页', 'home'], ['/writeups/', '题解菜单', 'writeups'], ['/stars/', '星标收藏', 'stars'], ['/#friends', '友链', 'friends'], ['/about/', '关于我', 'about']].forEach(([href, label, kind]) => { const active = page.pageKind === kind || kind === 'writeups' && ['category','categories','archives'].includes(page.pageKind); %>
           <a class="nav-link<%= active ? ' is-active' : '' %>" href="<%- url_for(href) %>"<%- active ? ' aria-current="page"' : '' %>><%= label %></a>
         <% }) %>
       </nav>
       <div class="header-actions"><a class="icon-button" href="<%- url_for('/writeups/#search') %>" aria-label="搜索题解"><%- icon('search') %></a><a class="icon-button github-link" href="<%= config.github %>" target="_blank" rel="noopener noreferrer" aria-label="GitHub 主页"><%- icon('github') %></a><button class="icon-button menu-toggle" aria-label="打开导航" aria-expanded="false" aria-controls="mobile-menu"><%- icon('menu') %></button></div>
     </div>
-    <nav id="mobile-menu" class="mobile-menu" aria-label="手机导航" hidden><a href="<%- url_for('/') %>">首页</a><a href="<%- url_for('/writeups/') %>">题解菜单</a><a href="<%- url_for('/stars/') %>">星标收藏</a><a href="<%- url_for('/about/') %>">关于我</a></nav>
+    <nav id="mobile-menu" class="mobile-menu" aria-label="手机导航" hidden><a href="<%- url_for('/') %>">首页</a><a href="<%- url_for('/writeups/') %>">题解菜单</a><a href="<%- url_for('/stars/') %>">星标收藏</a><a href="<%- url_for('/#friends') %>">友链</a><a href="<%- url_for('/about/') %>">关于我</a></nav>
   </header>
   <main id="main" class="page-shell"><%- body %></main>
   <footer class="site-footer"><div class="footer-inner"><div class="footer-brand"><a href="<%- url_for('/') %>">双层鳕鱼堡<span> / </span>一点热爱，层层叠加。</a><p>© <%= new Date().getFullYear() %> 双层鳕鱼堡 · 用好奇心加餐</p></div><div class="footer-links"><a href="https://hexo.io/" target="_blank" rel="noopener noreferrer">Powered by Hexo <%- icon('diagonal') %></a><a href="<%= config.github %>" target="_blank" rel="noopener noreferrer">GitHub <%- icon('diagonal') %></a><a href="<%- url_for('/archives/') %>">文章归档</a></div></div><p class="fan-note">个人博客 · 餐盘插画为 AI 创作，非麦当劳官方网站</p></footer>
